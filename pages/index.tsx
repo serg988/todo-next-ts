@@ -1,19 +1,21 @@
-import { Todo } from '../utils/types'
+import { TodoType } from '../utils/types'
 import Link from 'next/link'
+import { connect } from '../utils/connection'
+// import {Todo} from '../utils/connection'
 
 // Define the components props
 interface IndexProps {
-  todos: Array<Todo>
+  todos: TodoType[]
 }
 
 // define the page component
-function Index(props: IndexProps) {
-  const { todos } = props
+function Index({ todos }: IndexProps) {
+  console.log('🚀 ~ file: index.tsx:13 ~ Index ~ todos', todos)
 
   return (
     <div>
       <h1>My Todo List</h1>
-      <h2>Click On Todo to see it individually</h2>
+      <h2>Click On Todo for details</h2>
       <Link href='/todos/create'>
         <button>Create a New Todo</button>
       </Link>
@@ -34,12 +36,15 @@ function Index(props: IndexProps) {
 // GET PROPS FOR SERVER SIDE RENDERING
 export async function getServerSideProps() {
   // get todo data from API
-  const res = await fetch(process.env.API_URL as string)
-  const todos = await res.json()
+  // const res = await fetch(process.env.API_URL as string)
+  // const todos = await res.json()
+  // await connect()
+  const { Todo } = await connect()
+  const todos = await Todo.find()
 
   // return props
   return {
-    props: { todos },
+    props: { todos: JSON.parse(JSON.stringify(todos)) },
   }
 }
 

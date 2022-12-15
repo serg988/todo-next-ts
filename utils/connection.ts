@@ -1,5 +1,6 @@
 //IMPORT MONGOOSE
 import mongoose, { Model } from 'mongoose'
+import { stringify } from 'querystring'
 
 // CONNECTING TO MONGOOSE (Get Database Url from .env.local)
 const { DATABASE_URL } = process.env
@@ -13,6 +14,7 @@ export const connect = async () => {
 
   // OUR TODO SCHEMA
   const TodoSchema = new mongoose.Schema({
+    _id: String,
     item: String,
     completed: Boolean,
   })

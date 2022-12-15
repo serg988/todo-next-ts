@@ -14,7 +14,7 @@ export const connect = async () => {
 
   // OUR TODO SCHEMA
   const TodoSchema = new mongoose.Schema({
-    _id: String,
+    // _id: String,
     item: String,
     completed: Boolean,
   })

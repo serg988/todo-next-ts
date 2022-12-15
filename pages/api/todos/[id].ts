@@ -22,6 +22,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     // RESPONSE PUT REQUESTS
     PUT: async (req: NextApiRequest, res: NextApiResponse) => {
       const { Todo } = await connect() // connect to database
+      const todo = await Todo.findById({_id: req.query.id})
+      console.log("🚀 ~ file: [id].ts:26 ~ PATCH: ~ todo", todo)
       res.json(
         await Todo.findByIdAndUpdate(id, req.body, { new: true }).catch(catcher)
       )

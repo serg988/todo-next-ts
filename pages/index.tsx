@@ -1,7 +1,6 @@
 import { TodoType } from '../utils/types'
 import Link from 'next/link'
 import { connect } from '../utils/connection'
-// import {Todo} from '../utils/connection'
 
 // Define the components props
 interface IndexProps {
@@ -10,7 +9,6 @@ interface IndexProps {
 
 // define the page component
 function Index({ todos }: IndexProps) {
-  console.log('🚀 ~ file: index.tsx:13 ~ Index ~ todos', todos)
 
   return (
     <div>

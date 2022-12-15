@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { FormEvent, FormEventHandler, useRef } from 'react'
-import { Todo } from '../../utils/types'
+import { TodoType } from '../../utils/types'
 
 // Define props
 interface CreateProps {
@@ -20,7 +20,7 @@ function Create(props: CreateProps) {
     event.preventDefault()
 
     // construct new todo, create variable, check it item.current is not null to pass type checks
-    let todo: Todo = { item: '', completed: false }
+    let todo: TodoType = { item: '', completed: false }
     if (null !== item.current) {
       todo = { item: item.current.value, completed: false }
     }
